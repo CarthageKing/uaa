@@ -93,7 +93,8 @@ public class JwtTokenGranterTests {
                                    true,
                                    IdentityZoneHolder.get().getId(),
                                    "salt",
-                                   new Date()
+                                   new Date(),
+                                   null
         );
         uaaAuthentication = new UaaAuthentication(
             new UaaPrincipal(user), Collections.emptyList(), null

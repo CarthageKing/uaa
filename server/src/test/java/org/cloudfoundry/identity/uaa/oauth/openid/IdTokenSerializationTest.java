@@ -51,6 +51,7 @@ public class IdTokenSerializationTest {
             "familyname",
             1123l,
             "123",
+            "xyz",
             new HashSet<>(),
             new HashMap<>(),
             true,
@@ -79,6 +80,7 @@ public class IdTokenSerializationTest {
         assertThat(idTokenJsonString, hasJsonPath("given_name"));
         assertThat(idTokenJsonString, hasJsonPath("family_name"));
         assertThat(idTokenJsonString, hasJsonPath("phone_number"));
+        assertThat(idTokenJsonString, hasJsonPath("profile"));
         assertThat(idTokenJsonString, hasJsonPath("user_attributes"));
         assertThat(idTokenJsonString, hasJsonPath("previous_logon_time", is(1123)));
         assertThat(idTokenJsonString, hasJsonPath("iat", is(1)));
@@ -115,6 +117,7 @@ public class IdTokenSerializationTest {
             null,
             null,
             1123l,
+            null,
             null,
             new HashSet<>(),
             new HashMap<>(),

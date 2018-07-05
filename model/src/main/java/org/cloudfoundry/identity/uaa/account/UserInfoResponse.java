@@ -33,6 +33,7 @@ import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.SUB;
 import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.USER_ATTRIBUTES;
 import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.USER_ID;
 import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.USER_NAME;
+import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.PROFILE;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -67,6 +68,9 @@ public class UserInfoResponse {
 
     @JsonProperty(USER_ATTRIBUTES)
     public Map<String, List<String>> userAttributes;
+    
+    @JsonProperty(PROFILE)
+    public String profile;
 
     @JsonProperty(ROLES)
     public List<String> roles;
@@ -168,5 +172,13 @@ public class UserInfoResponse {
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
-    }
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
 }

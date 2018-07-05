@@ -203,7 +203,7 @@ public class Saml2TokenGranterTest {
     @Ignore
     public void test_oauth2_authentication_with_invalid_allowed_provider() {
         OAuth2Request myReq = new OAuth2Request(requestParameters, receivingClient.getClientId(), receivingClient.getAuthorities(), true, receivingClient.getScope(), receivingClient.getResourceIds(), null, null, null);
-        UaaUser user = new UaaUser("testid", "testuser","","test@test.org",AuthorityUtils.commaSeparatedStringToAuthorityList("foo.bar,spam.baz,space.1.developer,space.2.developer,space.1.admin"),"givenname", "familyname", null, null, OriginKeys.UAA, null, true, IdentityZone.getUaa().getId(), "testid", new Date());
+        UaaUser user = new UaaUser("testid", "testuser","","test@test.org",AuthorityUtils.commaSeparatedStringToAuthorityList("foo.bar,spam.baz,space.1.developer,space.2.developer,space.1.admin"),"givenname", "familyname", null, null, OriginKeys.UAA, null, true, IdentityZone.getUaa().getId(), "testid", new Date(), null);
         UaaPrincipal uaaPrincipal = new UaaPrincipal(user);
         when(uaaUserDatabase.retrieveUserById(anyString())).thenReturn(user);
         BaseClientDetails myClient = new BaseClientDetails(requestingClient);
@@ -229,7 +229,7 @@ public class Saml2TokenGranterTest {
     @Ignore
     public void test_oauth2_authentication_with_disallowed_provider() {
         OAuth2Request myReq = new OAuth2Request(requestParameters, receivingClient.getClientId(), receivingClient.getAuthorities(), true, receivingClient.getScope(), receivingClient.getResourceIds(), null, null, null);
-        UaaUser user = new UaaUser("testid", "testuser","","test@test.org",AuthorityUtils.commaSeparatedStringToAuthorityList("foo.bar,spam.baz,space.1.developer,space.2.developer,space.1.admin"),"givenname", "familyname", null, null, OriginKeys.UAA, null, true, IdentityZone.getUaa().getId(), "testid", new Date());
+        UaaUser user = new UaaUser("testid", "testuser","","test@test.org",AuthorityUtils.commaSeparatedStringToAuthorityList("foo.bar,spam.baz,space.1.developer,space.2.developer,space.1.admin"),"givenname", "familyname", null, null, OriginKeys.UAA, null, true, IdentityZone.getUaa().getId(), "testid", new Date(), null);
         UaaPrincipal uaaPrincipal = new UaaPrincipal(user);
         when(uaaUserDatabase.retrieveUserById(anyString())).thenReturn(user);
         BaseClientDetails myClient = new BaseClientDetails(requestingClient);

@@ -27,6 +27,7 @@ import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.REVOCATIO
 import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.USER_ATTRIBUTES;
 import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.USER_ID;
 import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.USER_NAME;
+import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.PROFILE;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class IdToken {
@@ -48,6 +49,8 @@ public class IdToken {
     public final Long previousLogonTime;
     @JsonProperty(PHONE_NUMBER)
     public final String phoneNumber;
+    @JsonProperty(PROFILE)
+    public final String profile;
     public final Set<String> roles;
     @JsonProperty(USER_ATTRIBUTES)
     public final Map<String, List<String>> userAttributes;
@@ -81,6 +84,7 @@ public class IdToken {
                    String familyName,
                    Long previousLogonTime,
                    String phoneNumber,
+                   String profile,
                    Set<String> roles,
                    Map<String, List<String>> userAttributes,
                    Boolean emailVerified,
@@ -107,6 +111,7 @@ public class IdToken {
         this.previousLogonTime = previousLogonTime;
         this.phoneNumber = phoneNumber;
         this.roles = roles;
+        this.profile = profile;
         this.userAttributes = userAttributes;
         this.emailVerified = emailVerified;
         this.nonce = nonce;

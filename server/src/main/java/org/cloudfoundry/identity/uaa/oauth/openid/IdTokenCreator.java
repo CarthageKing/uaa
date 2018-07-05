@@ -38,6 +38,7 @@ import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.JTI;
 import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.NONCE;
 import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.ORIGIN;
 import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.PHONE_NUMBER;
+import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.PROFILE;
 import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.PREVIOUS_LOGON_TIME;
 import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.REVOCATION_SIGNATURE;
 import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.ROLES;
@@ -87,6 +88,7 @@ public class IdTokenCreator {
         String givenName = getIfScopeContainsProfile(uaaUser.getGivenName(), userAuthenticationData.scopes);
         String familyName = getIfScopeContainsProfile(uaaUser.getFamilyName(), userAuthenticationData.scopes);
         String phoneNumber = getIfScopeContainsProfile(uaaUser.getPhoneNumber(), userAuthenticationData.scopes);
+        String profile = getIfScopeContainsProfile(uaaUser.getProfile(), userAuthenticationData.scopes);
 
         String issuerUrl;
         try {
@@ -114,6 +116,7 @@ public class IdTokenCreator {
             getIfNotExcluded(familyName, FAMILY_NAME),
             getIfNotExcluded(uaaUser.getPreviousLogonTime(), PREVIOUS_LOGON_TIME),
             getIfNotExcluded(phoneNumber, PHONE_NUMBER),
+            getIfNotExcluded(profile, PROFILE),
             getIfNotExcluded(roles, ROLES),
             getIfNotExcluded(userAttributes, USER_ATTRIBUTES),
             getIfNotExcluded(uaaUser.isVerified(), EMAIL_VERIFIED),

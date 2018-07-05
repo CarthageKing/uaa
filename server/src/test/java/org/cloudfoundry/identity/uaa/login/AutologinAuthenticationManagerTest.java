@@ -101,7 +101,8 @@ public class AutologinAuthenticationManagerTest {
                             true,
                             zoneId,
                             "test-salt",
-                            new Date(System.currentTimeMillis())
+                            new Date(System.currentTimeMillis()),
+                            null
                 )
             );
 

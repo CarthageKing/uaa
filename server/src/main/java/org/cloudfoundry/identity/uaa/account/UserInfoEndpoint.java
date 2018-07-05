@@ -38,6 +38,8 @@ import static org.cloudfoundry.identity.uaa.oauth.token.ClaimConstants.USER_ATTR
 @Controller
 public class UserInfoEndpoint implements InitializingBean {
 
+	private org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(UserInfoEndpoint.class);
+	
     private UaaUserDatabase userDatabase;
 
     public void setUserDatabase(UaaUserDatabase userDatabase) {
@@ -78,6 +80,9 @@ public class UserInfoEndpoint implements InitializingBean {
         response.setEmailVerified(user.isVerified());
         response.setPhoneNumber(user.getPhoneNumber());
         response.setPreviousLogonSuccess(user.getPreviousLogonTime());
+        response.setProfile(user.getProfile());
+        
+        log.info("user id [{}] profile is: {}", user.getId(), user.getProfile());
 
         UserInfo info = userDatabase.getUserInfo(user.getId());
         if (addCustomAttributes && info!=null) {
